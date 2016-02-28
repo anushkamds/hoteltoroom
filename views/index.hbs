@@ -13,7 +13,9 @@
             <input type="password" id="password" name="password" required />
         </div>
         <div class="form-submit">
-            <input type="submit" value="Log in" />
+            <input type="submit" value="Log in" /> {{#if error}}
+            <div style='color:red;'>{{error}}</div>
+            {{/if}}
             <div class="margin-top-30">
                 or <a href="/users/create">Create an account</a>
             </div>

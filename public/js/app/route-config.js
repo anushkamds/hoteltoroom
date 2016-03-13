@@ -6,10 +6,16 @@
     config.$inject = ['$routeProvider']
 
     function config($routeProvider) {
-        $routeProvider.when('/restaurants', {
-            templateUrl: 'js/app/restaurants/restaurants.html',
-            controller: 'RestaurantsController',
-            controllerAs: 'vm '
-        })
+        $routeProvider
+            .when('/restaurants', {
+                templateUrl: 'js/app/restaurants/restaurants.html',
+                controller: 'RestaurantsController',
+                controllerAs: 'vm '
+            })
+            .when('/menu/:restId', {
+                templateUrl: 'js/app/menu/menu.html',
+                controller: 'MenuController',
+                controllerAs: 'vm'
+            });
     }
 })

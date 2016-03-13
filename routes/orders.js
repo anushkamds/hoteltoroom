@@ -24,4 +24,12 @@ router.get('/api/restaurants', restrict, function (req, res, next) {
     })
 });
 
+router.get('api/resturatnt-details/:restId', function(req,res,next){
+   orderService.getResturantDetails(req.params.restId, function(err,details){
+       if(err){
+           return res.status(500).json({error:'fail to load'})
+       }
+       res.json(details);
+   })
+});
 module.exports = router;

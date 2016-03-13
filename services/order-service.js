@@ -23,3 +23,12 @@ export.getResturant = function (next) {
         next(null, resturants);
     });
 }
+
+export.getRestaurantDetails = function(restId, next){
+    api.resturant_details({rid:restId}, function(err, details){
+        if(err){
+            console.log(err);
+        }
+        next(err,details);
+    })
+}

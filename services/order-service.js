@@ -1,5 +1,6 @@
 var orderx = require('orderin-api');
 var config = require('../config');
+var Orders = require('../models/order').Orders;
 
 var api = new orderx.APIS(config.orderxKey, orderx.TEST);
 
@@ -24,11 +25,27 @@ export.getResturant = function (next) {
     });
 }
 
-export.getRestaurantDetails = function(restId, next){
-    api.resturant_details({rid:restId}, function(err, details){
-        if(err){
+export.getRestaurantDetails = function (restId, next) {
+    api.resturant_details({
+        rid: restId
+    }, function (err, details) {
+        if (err) {
             console.log(err);
         }
-        next(err,details);
+        next(err, details);
     })
+}
+
+exports.createOrder = function (user, food, next) {
+    var order = new Order {
+        user: user,
+        food: food
+    }
+
+    order.save(function (err, saveOrder) {
+        if (!err) {
+            return next(null, saveOrder._id);
+        }
+        next(err);
+    });
 }
